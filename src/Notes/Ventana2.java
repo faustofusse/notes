@@ -3,13 +3,15 @@ package Notes;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class Ventana2 extends JFrame{
+public class Ventana2 extends JFrame implements KeyListener{
 	
 	private JPanel panelP = new JPanel();
 	private JPanel panel2 = new JPanel();
@@ -17,6 +19,7 @@ public class Ventana2 extends JFrame{
 	private JScrollPane scroll = new JScrollPane();
 	
 	public Ventana2 (){
+		
 		setLayout(new BorderLayout());
 		setSize(444,438);
 		setLocationRelativeTo(null);
@@ -38,6 +41,24 @@ public class Ventana2 extends JFrame{
 		
 		add(panel2, BorderLayout.NORTH); 
 		add(scroll, BorderLayout.CENTER);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("HOlaaa");
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

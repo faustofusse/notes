@@ -26,6 +26,7 @@ public class PanelNotas extends JPanel{
 		PanelBoton newBtn = new PanelBoton(texto);
 		botones.add(newBtn);
 		add(botones.get(botones.size()-1));
+		agregarBotones();
 	}
 	
 	public void agregarBotones(){

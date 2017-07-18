@@ -27,8 +27,6 @@ public class Menu extends JPanel implements ActionListener{
 		btnMenu.setBorder(null);
 		add(btnMenu);
 		
-		//add(new Espacio(15,60,new Color(3,171,244)));
-		
 		titulo.setForeground(Color.white);
 		titulo.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 		add(titulo);
@@ -37,7 +35,6 @@ public class Menu extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Main.ventana1.notas.addBtn("Hola soy fausto");
-		Main.ventana1.notas.agregarBotones();
 		
 		if (!PanelNotas.hayNotas){
 			PanelNotas.hayNotas = true;
