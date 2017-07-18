@@ -1,5 +1,6 @@
 package Notes;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -26,9 +27,7 @@ public class Menu extends JPanel implements ActionListener{
 		btnMenu.setBorder(null);
 		add(btnMenu);
 		
-		//espacio.setPreferredSize(new Dimension(15,60));
-		//espacio.setBackground(new Color(3,171,244));
-		add(new Espacio(15,60,new Color(3,171,244)));
+		//add(new Espacio(15,60,new Color(3,171,244)));
 		
 		titulo.setForeground(Color.white);
 		titulo.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
@@ -37,6 +36,16 @@ public class Menu extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Tocaste el btn menu.");
+		Main.ventana1.notas.addBtn("Hola soy fausto");
+		Main.ventana1.notas.agregarBotones();
+		
+		if (!PanelNotas.hayNotas){
+			PanelNotas.hayNotas = true;
+			Main.ventana1.remove(Main.ventana1.nada);
+			Main.ventana1.add(Main.ventana1.scroll, BorderLayout.CENTER);
+		}
+		
+		Main.ventana1.notas.setPreferredSize(new Dimension(300,PanelNotas.botones.size()*66));
+		Main.ventana1.reload();
 	}
 }
