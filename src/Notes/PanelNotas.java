@@ -34,7 +34,7 @@ public class PanelNotas extends JPanel{
 			botones.get(i).numero = i;
 			add(botones.get(i));
 		}
-		setPreferredSize(new Dimension(300,botones.size()*80));
+		setPreferredSize(new Dimension(300,botones.size()*70));
 	}
 
 }

@@ -9,16 +9,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class Ventana extends JFrame implements KeyListener{
+public class Ventana extends JFrame{
 	private static boolean control = false;
 	public PanelNotas notas = new PanelNotas();
 	public JScrollPane scroll = new JScrollPane();
 	public PanelNada nada = new PanelNada();
-	private Menu menu = new Menu();
+	
+	private MenuNuevo menuNuevo = new MenuNuevo();
+	private MenuNotas menuNotas = new MenuNotas();
 	public PanelNuevaNota nuevo = new PanelNuevaNota();
 	
 	public Ventana(){
-
 		setVisible(true);
 		setSize(465,444);
 		setResizable(true);
@@ -27,22 +28,15 @@ public class Ventana extends JFrame implements KeyListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		agregarComponentes();
-		
-		addKeyListener(this);
 	}
 	
 	private void agregarComponentes(){
-		add(menu, BorderLayout.NORTH);
+		
 		scroll.setViewportView(notas);
 		scroll.setBorder(null);
-		add(scroll, BorderLayout.CENTER);
-		
-	
-		if (PanelNotas.hayNotas){
-			add(scroll, BorderLayout.CENTER);
-		}else{
-			add(nada, BorderLayout.CENTER);
-		}		
+		//add(scroll, BorderLayout.CENTER);
+
+		setPanelNotas();
 	}
 	
 	public void reload(){
@@ -50,23 +44,30 @@ public class Ventana extends JFrame implements KeyListener{
 		validate();
 		repaint();
 	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Holaaaaa");
+	
+	public void setPanelNotas(){
+		//removePaneles();
+		add(menuNotas, BorderLayout.NORTH);
+		if (PanelNotas.hayNotas){
+			add(scroll, BorderLayout.CENTER);
+		}else{
+			add(nada, BorderLayout.CENTER);
+		}
 	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	
+	public void setPanelNuevo(){
+		this.removePaneles();
+		add(menuNuevo, BorderLayout.NORTH);
+		add(nuevo, BorderLayout.CENTER);
+		reload();
 	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	
+	public void removePaneles(){
+		this.remove(menuNotas);
+		this.remove(scroll);
+		this.remove(nada);
+		this.remove(notas);
+		this.remove(menuNuevo);
+		this.remove(nuevo);
 	}
-
 }

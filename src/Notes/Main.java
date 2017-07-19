@@ -10,5 +10,4 @@ public class Main {
 		ventana1.setVisible(true);
 		
 	}
-
 }
