@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 
 public class PanelNuevaNota extends JPanel{
 	private JPanel pTitulo = new JPanel();
-	private static Focus focus = new Focus();
+	public static Focus focus = new Focus();
 	public static JTextField titulo = new JTextField();
+	
 	public static boolean tCambiado = false;
 	
 	private JPanel pParrafo = new JPanel();
@@ -25,13 +26,12 @@ public class PanelNuevaNota extends JPanel{
 	public PanelNuevaNota(){
 		setBackground(Color.white);
 		setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+		setPreferredSize(new Dimension(Const.WIDTH_VENTANA, Const.HEIGHT_VENTANA-75));
 		
 		iniciar();
 	}
 	
 	public void iniciar(){
-		removeAll();
-		
 		pTitulo.setLayout(new BorderLayout(15,15));
 		pParrafo.setLayout(new BorderLayout(15,15));
 		
@@ -47,8 +47,8 @@ public class PanelNuevaNota extends JPanel{
 		titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
 		parrafo.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
 		
-		titulo.addFocusListener(focus);
-		parrafo.addFocusListener(focus);
+		titulo.addFocusListener(new Focus());
+		parrafo.addFocusListener(new Focus());
 		
 		pTitulo.setPreferredSize(new Dimension(425,40));
 		pParrafo.setPreferredSize(new Dimension(425,400));
@@ -61,5 +61,19 @@ public class PanelNuevaNota extends JPanel{
 		add(new Espacio(425,1,Color.gray));
 		add(new Espacio(425,10,Color.white));
 		add(pParrafo);
+	}
+
+	public void reiniciar() {		
+		titulo.setText("Titulo de la nota");
+		parrafo.setText("Escribe el texto aqui");
+		
+		titulo.setBorder(null);
+		parrafo.setBorder(null);
+		
+		titulo.setForeground(Color.gray);
+		parrafo.setForeground(Color.gray);
+		
+		tCambiado=false;
+		pCambiado=false;
 	}
 }

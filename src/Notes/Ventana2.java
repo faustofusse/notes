@@ -2,63 +2,73 @@ package Notes;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class Ventana2 extends JFrame implements KeyListener{
+public class Ventana2 extends JFrame{
+	private static boolean control = false;
+	public PanelNotas notas = new PanelNotas();
+	public JScrollPane scroll = new JScrollPane();
+	public JScrollPane scrollNuevo = new JScrollPane();
+	public PanelNada nada = new PanelNada();
 	
-	private JPanel panelP = new JPanel();
-	private JPanel panel2 = new JPanel();
-	private JButton boton = new JButton("Hola");
-	private JScrollPane scroll = new JScrollPane();
+	private MenuNuevo menuNuevo = new MenuNuevo();
+	private MenuNotas menuNotas = new MenuNotas();
+	public PanelNuevaNota nuevo = new PanelNuevaNota();
 	
-	public Ventana2 (){
-		
-		setLayout(new BorderLayout());
-		setSize(444,438);
+	public Ventana2(){
+		setSize(Const.WIDTH_VENTANA, Const.HEIGHT_VENTANA);
+		setResizable(true);
 		setLocationRelativeTo(null);
+		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//scroll.setBounds(0,0, 444,438);
-		
-		panel2.setBackground(Color.blue);
-		panel2.setPreferredSize(new Dimension(100,30));
-		
-		boton.setBounds(100, 500, 100, 20);
-		
-		panelP.setPreferredSize(new Dimension(0, 520));
-		panelP.setBackground(Color.green);
-		panelP.setLayout(null);
-		panelP.add(boton);
-		
-		scroll.setViewportView(panelP);
-		
-		add(panel2, BorderLayout.NORTH); 
-		add(scroll, BorderLayout.CENTER);
+		agregarComponentes();
 	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("HOlaaa");
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+	
+	private void agregarComponentes(){
+		scroll.setViewportView(notas);
+		scroll.setBorder(null);
 		
+		setPanelNotas();
 	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	
+	public void reload(){
+		invalidate();
+		validate();
+		repaint();
 	}
-
+	
+	public void setPanelNotas(){
+		removePaneles();
+		add(menuNotas, BorderLayout.NORTH);
+		if (PanelNotas.hayNotas){
+			add(scroll, BorderLayout.CENTER);
+		}else{
+			add(nada, BorderLayout.CENTER);
+		}
+		PanelNuevaNota.pCambiado = false;
+		reload();
+	}
+	
+	public void setPanelNuevo(){
+		removePaneles();
+		add(menuNuevo, BorderLayout.NORTH);
+		add(nuevo, BorderLayout.CENTER);
+		reload();
+	}
+	
+	public void removePaneles(){
+		this.remove(menuNotas);
+		this.remove(scroll);
+		this.remove(nada);
+		this.remove(notas);
+		this.remove(menuNuevo);
+		this.remove(nuevo);
+		this.remove(scrollNuevo);
+	}
 }

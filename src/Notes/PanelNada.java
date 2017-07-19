@@ -2,6 +2,7 @@ package Notes;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
@@ -13,7 +14,7 @@ public class PanelNada extends JPanel{
 	public PanelNada(){
 		setBackground(Color.white);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 0, 150));
-		
+		setPreferredSize(new Dimension(Const.WIDTH_VENTANA, Const.HEIGHT_VENTANA));
 		
 		label.setForeground(Color.gray);
 		label.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));

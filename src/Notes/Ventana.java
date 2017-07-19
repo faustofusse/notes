@@ -2,41 +2,68 @@ package Notes;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class Ventana extends JFrame{
-	private static boolean control = false;
-	public PanelNotas notas = new PanelNotas();
+	
+	public PanelNotas panelNotas = new PanelNotas();
+	public PanelNada panelNada = new PanelNada();
+	public PanelNuevaNota panelNuevo = new PanelNuevaNota();
+	public MenuNuevo menuNuevo = new MenuNuevo();
+	public MenuNotas menuNotas = new MenuNotas();
 	public JScrollPane scroll = new JScrollPane();
-	public PanelNada nada = new PanelNada();
+	public Espacio espacioNada = new Espacio(0,0,Color.blue);
 	
-	private MenuNuevo menuNuevo = new MenuNuevo();
-	private MenuNotas menuNotas = new MenuNotas();
-	public PanelNuevaNota nuevo = new PanelNuevaNota();
-	
-	public Ventana(){
-		setVisible(true);
-		setSize(465,444);
+	public Ventana (){
+		setSize(Const.WIDTH_VENTANA, Const.HEIGHT_VENTANA);
 		setResizable(true);
 		setLocationRelativeTo(null);
-		setLayout(new BorderLayout());
+		setLayout(new BorderLayout(0,0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		agregarComponentes();
+		iniciarComponentes();
+	}
+
+	private void iniciarComponentes() {
+		scroll.setViewportView(panelNotas);
+		scroll.setBorder(null);
+		
+		setPanelNotas();
+	}
+
+	public void setPanelNotas(){
+		removePaneles();
+		add(menuNotas, BorderLayout.NORTH); 
+		if (PanelNotas.hayNotas){
+			add(scroll, BorderLayout.CENTER);
+		}else{
+			add(panelNada, BorderLayout.CENTER);
+		}
+		reload();
 	}
 	
-	private void agregarComponentes(){
-		
-		scroll.setViewportView(notas);
-		scroll.setBorder(null);
-		//add(scroll, BorderLayout.CENTER);
-
-		setPanelNotas();
+	public void setPanelNuevo(){
+		removePaneles();
+		panelNuevo.reiniciar();
+		add(menuNuevo, BorderLayout.NORTH);
+		add(panelNuevo, BorderLayout.CENTER);
+		reload();
+	}
+	
+	public void removePaneles(){
+		this.remove(menuNotas);
+		this.remove(scroll);
+		this.remove(panelNada);
+		this.remove(panelNotas);
+		this.remove(menuNuevo);
+		this.remove(panelNuevo);
 	}
 	
 	public void reload(){
@@ -44,30 +71,5 @@ public class Ventana extends JFrame{
 		validate();
 		repaint();
 	}
-	
-	public void setPanelNotas(){
-		//removePaneles();
-		add(menuNotas, BorderLayout.NORTH);
-		if (PanelNotas.hayNotas){
-			add(scroll, BorderLayout.CENTER);
-		}else{
-			add(nada, BorderLayout.CENTER);
-		}
-	}
-	
-	public void setPanelNuevo(){
-		this.removePaneles();
-		add(menuNuevo, BorderLayout.NORTH);
-		add(nuevo, BorderLayout.CENTER);
-		reload();
-	}
-	
-	public void removePaneles(){
-		this.remove(menuNotas);
-		this.remove(scroll);
-		this.remove(nada);
-		this.remove(notas);
-		this.remove(menuNuevo);
-		this.remove(nuevo);
-	}
+
 }

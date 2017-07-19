@@ -44,20 +44,9 @@ public class MenuNotas extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*
-		Main.ventana1.notas.addBtn("Hola soy fausto");
 		
-		if (!PanelNotas.hayNotas){
-			PanelNotas.hayNotas = true;
-			Main.ventana1.remove(Main.ventana1.nada);
-			Main.ventana1.add(Main.ventana1.scroll, BorderLayout.CENTER);
-		}
-		
-		Main.ventana1.notas.setPreferredSize(new Dimension(300,PanelNotas.botones.size()*66));
-		Main.ventana1.reload();
-		*/
-		Main.ventana1.nuevo.iniciar();
 		Main.ventana1.setPanelNuevo();
+		
 	}
 	
 }
