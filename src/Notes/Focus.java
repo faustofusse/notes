@@ -8,24 +8,24 @@ public class Focus implements FocusListener{
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		if(e.getSource() == PanelNuevaNota.titulo){
-			if (!PanelNuevaNota.tCambiado){
-				PanelNuevaNota.titulo.setText("");
-				PanelNuevaNota.titulo.setForeground(Color.BLACK);
-				PanelNuevaNota.tCambiado = true;
+		if(e.getSource() == PanelNuevo.titulo){
+			if (!PanelNuevo.tCambiado){
+				PanelNuevo.titulo.setText("");
+				PanelNuevo.titulo.setForeground(Color.BLACK);
+				PanelNuevo.tCambiado = true;
 			}
 		}else{
-			if (!PanelNuevaNota.pCambiado){
-				PanelNuevaNota.parrafo.setText("");
-				PanelNuevaNota.parrafo.setForeground(Color.BLACK);
-				PanelNuevaNota.pCambiado = true;
+			if (!PanelNuevo.pCambiado){
+				PanelNuevo.parrafo.setText("");
+				PanelNuevo.parrafo.setForeground(Color.BLACK);
+				PanelNuevo.pCambiado = true;
 			}
 		}
 	}
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		if(e.getSource() == PanelNuevaNota.titulo){
+		if(e.getSource() == PanelNuevo.titulo){
 			
 		}
 	}

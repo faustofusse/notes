@@ -33,8 +33,12 @@ public class MenuNuevo extends JPanel implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		PanelNotas.hayNotas = true;
-		Main.ventana1.panelNotas.addBtn(Main.ventana1.panelNuevo.titulo.getText());
-		Main.ventana1.setPanelNotas();
+		
+		//Main.ventana1.panelNotas.addBtn(Main.ventana1.panelNuevo.titulo.getText(), Main.ventana1.panelNuevo.parrafo.getText());
+		//Main.ventana1.setPanelNotas();
+		
+		Main.ventana1.panelNuevo.guardarNota();
+		PanelNotas.notaAbierta = -1;
+		
 	}
 }

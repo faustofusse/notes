@@ -11,20 +11,25 @@ import javax.swing.JPanel;
 
 public class PanelNotas extends JPanel{
 	public static ArrayList<PanelBoton> botones = new ArrayList<PanelBoton>();
+	public static ArrayList<String> titulos = new ArrayList<String>();
+	public static ArrayList<String> parrafos = new ArrayList<String>();
+	
 	public static boolean hayNotas = false;
+	public static int notaAbierta = -1;
 	
 	public PanelNotas(){
 		setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
-		setBackground(Color.white);
+		setBackground(Color.white); 
 		
 		add(new Espacio(444, 5, Color.white));
-		
 		agregarBotones();
 	}
 	
-	public void addBtn(String texto){
-		PanelBoton newBtn = new PanelBoton(texto);
+	public void addBtn(String titulo, String parrafo){
+		PanelBoton newBtn = new PanelBoton(titulo);
 		botones.add(newBtn);
+		titulos.add(titulo);
+		parrafos.add(parrafo);
 		add(botones.get(botones.size()-1));
 		hayNotas=true;
 		agregarBotones();

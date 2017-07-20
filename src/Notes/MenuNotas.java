@@ -8,17 +8,21 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MenuNotas extends JPanel implements ActionListener{
 
-	private JButton btnMas = new JButton("+");
+	private JButton btnMas = new JButton(new ImageIcon("src/Notes/img/mas2.png"));
 	private JLabel titulo = new JLabel("Notes");
 	
+	private JPanel panelIzquierda = new JPanel();
+	private JPanel panelDerecha = new JPanel();
+	
 	public MenuNotas(){
-		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		setLayout(new BorderLayout(0,0));
 		setBackground(new Color(3,171,244));
 		setPreferredSize(new Dimension(444,60));
 		
@@ -26,25 +30,27 @@ public class MenuNotas extends JPanel implements ActionListener{
 	}
 	
 	private void ponerComponentes(){
+		panelIzquierda.setLayout(new FlowLayout(FlowLayout.LEFT,15,7));
+		panelIzquierda.setBackground(new Color(3,171,244));
+		panelDerecha.setLayout(new FlowLayout(FlowLayout.RIGHT,0,0));
+		
 		btnMas.addActionListener(this);
-		btnMas.setBackground(new Color(3,171,244));
-		btnMas.setForeground(Color.white);
-		btnMas.setPreferredSize(new Dimension(60,60));
-		btnMas.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 		btnMas.setBorder(null);
 		
 		titulo.setForeground(Color.white);
 		titulo.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 		
-		add(new Espacio(20, 60, new Color(3,171,244)));
-		add(titulo);
-		add(new Espacio(290, 60, new Color(3,171,244)));
-		add(btnMas);
+		panelIzquierda.add(titulo);
+		panelDerecha.add(btnMas);
+		
+		add(panelIzquierda, BorderLayout.WEST);
+		add(panelDerecha, BorderLayout.EAST);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		PanelNotas.notaAbierta = PanelNotas.botones.size();
 		Main.ventana1.setPanelNuevo();
 		
 	}

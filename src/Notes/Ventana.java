@@ -15,7 +15,7 @@ public class Ventana extends JFrame{
 	
 	public PanelNotas panelNotas = new PanelNotas();
 	public PanelNada panelNada = new PanelNada();
-	public PanelNuevaNota panelNuevo = new PanelNuevaNota();
+	public PanelNuevo panelNuevo = new PanelNuevo();
 	public MenuNuevo menuNuevo = new MenuNuevo();
 	public MenuNotas menuNotas = new MenuNotas();
 	public JScrollPane scroll = new JScrollPane();

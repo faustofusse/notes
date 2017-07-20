@@ -12,18 +12,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class PanelNuevaNota extends JPanel{
+public class PanelNuevo extends JPanel{
 	private JPanel pTitulo = new JPanel();
 	public static Focus focus = new Focus();
-	public static JTextField titulo = new JTextField();
+	public static Titulo titulo = new Titulo();
 	
 	public static boolean tCambiado = false;
 	
 	private JPanel pParrafo = new JPanel();
-	public static JTextArea parrafo = new JTextArea();
+	public static Parrafo parrafo = new Parrafo();
 	public static boolean pCambiado = false; 
 	
-	public PanelNuevaNota(){
+	public PanelNuevo(){
 		setBackground(Color.white);
 		setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
 		setPreferredSize(new Dimension(Const.WIDTH_VENTANA, Const.HEIGHT_VENTANA-75));
@@ -34,21 +34,6 @@ public class PanelNuevaNota extends JPanel{
 	public void iniciar(){
 		pTitulo.setLayout(new BorderLayout(15,15));
 		pParrafo.setLayout(new BorderLayout(15,15));
-		
-		titulo.setText("Titulo de la nota");
-		parrafo.setText("Escribe el texto aqui");
-		
-		titulo.setBorder(null);
-		parrafo.setBorder(null);
-		
-		titulo.setForeground(Color.gray);
-		parrafo.setForeground(Color.gray);
-		
-		titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-		parrafo.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-		
-		titulo.addFocusListener(new Focus());
-		parrafo.addFocusListener(new Focus());
 		
 		pTitulo.setPreferredSize(new Dimension(425,40));
 		pParrafo.setPreferredSize(new Dimension(425,400));
@@ -75,5 +60,35 @@ public class PanelNuevaNota extends JPanel{
 		
 		tCambiado=false;
 		pCambiado=false;
+	}
+	
+	public void abrirNota(int numero){
+		
+		Main.ventana1.setPanelNuevo();
+		titulo.setForeground(Color.black);
+		tCambiado=true;
+		parrafo.setForeground(Color.black);
+		pCambiado=true;
+		titulo.setText(PanelNotas.titulos.get(numero));
+		parrafo.setText(PanelNotas.parrafos.get(numero));
+		
+	}
+	
+	public void guardarNota(){
+		
+		if (PanelNotas.notaAbierta < PanelNotas.botones.size()){
+			
+			PanelNotas.titulos.set(PanelNotas.notaAbierta, titulo.getText());
+			PanelNotas.parrafos.set(PanelNotas.notaAbierta, parrafo.getText());
+			Main.ventana1.panelNotas.botones.get(PanelNotas.notaAbierta).cambiarTitulo(titulo.getText());;
+			Main.ventana1.setPanelNotas();
+			
+		}else{
+			
+			Main.ventana1.panelNotas.addBtn(titulo.getText(), parrafo.getText());
+			Main.ventana1.setPanelNotas();
+			
+		}
+		
 	}
 }
