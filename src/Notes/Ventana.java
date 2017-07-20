@@ -40,6 +40,7 @@ public class Ventana extends JFrame{
 
 	public void setPanelNotas(){
 		removePaneles();
+		panelNotas.refresh();
 		add(menuNotas, BorderLayout.NORTH); 
 		if (PanelNotas.hayNotas){
 			add(scroll, BorderLayout.CENTER);

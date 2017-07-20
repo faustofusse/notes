@@ -24,6 +24,7 @@ public class MenuNuevo extends JPanel implements ActionListener{
 		
 		btnMenu.setBorder(null);
 		btnMenu.addActionListener(this);
+		btnMenu.addMouseListener(new Mouse());
 		add(btnMenu);
 		
 		titulo.setForeground(Color.white);

@@ -37,10 +37,36 @@ public class PanelNotas extends JPanel{
 	
 	public void agregarBotones(){
 		for(int i =0;i< botones.size(); i++){
-			botones.get(i).numero = i;
-			add(botones.get(i));
+			if (!botones.get(i).isEliminado){
+				botones.get(i).numero = i;
+				botones.get(i).addBtnEliminar(i);
+				add(botones.get(i));
+			}
 		}
 		setPreferredSize(new Dimension(300,botones.size()*70));
 	}
+	
+	private int cantNoEliminados(){
+		int cant =0;
+		
+		for (PanelBoton e: botones){
+			if (!e.isEliminado){
+				cant++;
+			}
+		}
+		
+		return cant;
+	}
 
+	public void refresh(){
+		for (PanelBoton e: botones){
+			remove(e);
+		}
+		agregarBotones();
+		setPreferredSize(new Dimension(300,cantNoEliminados()*70));
+		if (cantNoEliminados()==0){
+			hayNotas = false;
+			botones.clear();
+		}
+	}
 }

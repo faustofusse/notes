@@ -36,6 +36,7 @@ public class MenuNotas extends JPanel implements ActionListener{
 		
 		btnMas.addActionListener(this);
 		btnMas.setBorder(null);
+		btnMas.addMouseListener(new Mouse());
 		
 		titulo.setForeground(Color.white);
 		titulo.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
