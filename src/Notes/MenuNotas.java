@@ -23,7 +23,7 @@ public class MenuNotas extends JPanel implements ActionListener{
 	
 	public MenuNotas(){
 		setLayout(new BorderLayout(0,0));
-		setBackground(Const.COLOR);
+		setBackground(Const.COLOR_FONDO);
 		setPreferredSize(new Dimension(444,60));
 		
 		ponerComponentes();
@@ -31,7 +31,7 @@ public class MenuNotas extends JPanel implements ActionListener{
 	
 	private void ponerComponentes(){
 		panelIzquierda.setLayout(new FlowLayout(FlowLayout.LEFT,15,7));
-		panelIzquierda.setBackground(Const.COLOR);
+		panelIzquierda.setBackground(Const.COLOR_FONDO);
 		panelDerecha.setLayout(new FlowLayout(FlowLayout.RIGHT,0,0));
 		
 		btnMas.addActionListener(this);

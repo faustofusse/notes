@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 public class PanelBoton extends JPanel implements ActionListener{
 	public int numero;
 	private JButton btnTitulo = new JButton();
+	private BtnEliminar btnEliminar = new BtnEliminar();
 	
 	public PanelBoton(String titulo){
 		setLayout(new BorderLayout());
@@ -20,16 +21,18 @@ public class PanelBoton extends JPanel implements ActionListener{
 		
 		btnTitulo.setText(titulo);
 		btnTitulo.setBorder(null);   
-		btnTitulo.setBackground(Color.blue);
+		btnTitulo.setBackground(Const.COLOR_GRIS);
 		btnTitulo.addActionListener(this);
 		btnTitulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
 		add(btnTitulo, BorderLayout.CENTER);
+		add(btnEliminar, BorderLayout.EAST);
 	}
 	
 	public void cambiarTitulo(String titulo2){
-		removeAll();
+		remove(btnTitulo);
 		btnTitulo = new JButton(titulo2);
 		btnTitulo.setBorder(null);
+		btnTitulo.setBackground(Const.COLOR_GRIS);
 		btnTitulo.addActionListener(this);
 		btnTitulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
 		add(btnTitulo, BorderLayout.CENTER);

@@ -17,10 +17,10 @@ public class MenuNuevo extends JPanel implements ActionListener{
 	private JLabel titulo = new JLabel("Notes");
 	public MenuNuevo(){
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		setBackground(Const.COLOR);
+		setBackground(Const.COLOR_FONDO);
 		setPreferredSize(new Dimension(444,60));
 		
-		add(new Espacio(5,60,Const.COLOR));
+		add(new Espacio(5,60,Const.COLOR_FONDO));
 		
 		btnMenu.setBorder(null);
 		btnMenu.addActionListener(this);
