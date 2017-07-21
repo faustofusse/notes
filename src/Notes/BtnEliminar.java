@@ -25,17 +25,6 @@ public class BtnEliminar extends JButton implements ActionListener{
 		Main.ventana1.setPanelNotas();
 		Main.ventana1.reload();
 		
-//		Main.ventana1.panelNotas.remove(Main.ventana1.panelNotas.botones.get(numero));
-//		
-//		PanelNotas.botones.remove(numero);
-//		PanelNotas.titulos.remove(numero);
-//		PanelNotas.parrafos.remove(numero);
-//		
-//		if (PanelNotas.botones.size() == 0){
-//			PanelNotas.hayNotas = false;
-//		}
-//		Main.ventana1.setPanelNotas();
-//		Main.ventana1.reload();
 	}
 	
 }

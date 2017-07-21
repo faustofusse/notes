@@ -67,6 +67,8 @@ public class PanelNotas extends JPanel{
 		if (cantNoEliminados()==0){
 			hayNotas = false;
 			botones.clear();
+			titulos.clear();
+			parrafos.clear();
 		}
 	}
 }

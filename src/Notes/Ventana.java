@@ -24,9 +24,12 @@ public class Ventana extends JFrame{
 	public Ventana (){
 		setSize(Const.WIDTH_VENTANA, Const.HEIGHT_VENTANA);
 		setResizable(true);
+		setMaximumSize(new Dimension(719, 3000));
+		setMinimumSize(new Dimension(431, 214));
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout(0,0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addKeyListener(new Teclas());
 		
 		iniciarComponentes();
 	}
